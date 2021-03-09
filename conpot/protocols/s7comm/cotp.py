@@ -47,7 +47,7 @@ class COTP(object):
         try:
             header = unpack("!BBB", packet[:3])
         except struct.error:
-            raise ParseException("s7comm", "malformed packet header structure")
+            return
 
         self.packet_length = header[0]
         self.tpdu_type = int(header[1])
